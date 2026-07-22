@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Cheansnow</title>
+
+<meta name="description" content="Cheansnow 的个人网站">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            "PingFang SC",
+            "Microsoft YaHei",
+            sans-serif;
+
+        background: #f7f7f7;
+        color: #222;
+
+        transition:
+            background 0.3s ease,
+            color 0.3s ease;
+    }
+
+    /* =========================
+       导航栏
+    ========================= */
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 70px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 8%;
+
+        background: rgba(247, 247, 247, 0.8);
+        backdrop-filter: blur(12px);
+
+        z-index: 100;
+
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -1px;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 14px;
+        opacity: 0.7;
+
+        transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        opacity: 1;
+    }
+
+    /* =========================
+       深色模式按钮
+    ========================= */
+
+    #theme-toggle {
+        border: none;
+        background: transparent;
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        padding: 5px;
+    }
+
+    /* =========================
+       首页
+    ========================= */
+
+    .hero {
+        min-height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+
+        padding: 100px 8%;
+    }
+
+    .hero-small {
+        font-size: 14px;
+        opacity: 0.55;
+
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: clamp(50px, 9vw, 110px);
+
+        line-height: 1;
+
+        letter-spacing: -5px;
+
+        margin-bottom: 30px;
+    }
+
+    .hero-description {
+        max-width: 600px;
+
+        font-size: 20px;
+
+        line-height: 1.8;
+
+        opacity: 0.65;
+    }
+
+    .hero-buttons {
+        margin-top: 40px;
+
+        display: flex;
+        gap: 15px;
+    }
+
+    .button {
+        display: inline-block;
+
+        padding: 12px 22px;
+
+        border-radius: 30px;
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+    }
+
+    .button-primary {
+        background: #222;
+        color: white;
+    }
+
+    .button-secondary {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        color: inherit;
+    }
+
+    /* =========================
+       通用 Section
+    ========================= */
+
+    section {
+        padding: 120px 8%;
+    }
+
+    .section-title {
+        font-size: 40px;
+        margin-bottom: 50px;
+
+        letter-spacing: -2px;
+    }
+
+    /* =========================
+       项目
+    ========================= */
+
+    .projects {
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(280px, 1fr));
+
+        gap: 20px;
+    }
+
+    .project-card {
+        padding: 30px;
+
+        min-height: 220px;
+
+        border-radius: 20px;
+
+        background: white;
+
+        border: 1px solid rgba(0, 0, 0, 0.06);
+
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .project-card h3 {
+        margin-bottom: 15px;
+    }
+
+    .project-card p {
+        line-height: 1.7;
+        opacity: 0.6;
+    }
+
+    /* =========================
+       关于我
+    ========================= */
+
+    .about {
+        max-width: 700px;
+    }
+
+    .about p {
+        font-size: 18px;
+
+        line-height: 2;
+
+        opacity: 0.7;
+    }
+
+    /* =========================
+       页脚
+    ========================= */
+
+    footer {
+        padding: 50px 8%;
+
+        text-align: center;
+
+        font-size: 13px;
+
+        opacity: 0.5;
+    }
+
+    /* =========================
+       深色模式
+    ========================= */
+
+    body.dark {
+        background: #111;
+        color: #eee;
+    }
+
+    body.dark nav {
+        background: rgba(17, 17, 17, 0.8);
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    body.dark .button-primary {
+        background: white;
+        color: #111;
+    }
+
+    body.dark .button-secondary {
+        border-color:
+            rgba(255, 255, 255, 0.2);
+    }
+
+    body.dark .project-card {
+        background: #1b1b1b;
+
+        border-color:
+            rgba(255, 255, 255, 0.08);
+    }
+
+    /* =========================
+       手机端
+    ========================= */
+
+    @media (max-width: 700px) {
+
+        nav {
+            padding: 0 5%;
+        }
+
+        .nav-links {
+            gap: 15px;
+        }
+
+        .nav-links a {
+            display: none;
+        }
+
+        .hero {
+            padding: 100px 7%;
+        }
+
+        .hero h1 {
+            letter-spacing: -3px;
+        }
+
+        section {
+            padding: 80px 7%;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- 导航栏 -->
+
+<nav>
+
+    <div class="logo">
+        Chean
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#projects">
+            Projects
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <button id="theme-toggle">
+            🌙
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- 首页 -->
+
+<main id="home">
+
+    <section class="hero">
+
+        <div class="hero-small">
+            Hello, welcome to my website.
+        </div>
+
+        <h1>
+            I'm Cheansnow.
+        </h1>
+
+        <p class="hero-description">
+
+            一个正在探索编程、技术与生活的学生。
+
+            <br>
+
+            Student · Developer · Creator
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#projects"
+                class="button button-primary"
+            >
+                Explore My World
+            </a>
+
+            <a
+                href="https://github.com/Cheansnow"
+                target="_blank"
+                class="button button-secondary"
+            >
+                GitHub
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- 项目 -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            Projects
+        </h2>
+
+        <div class="projects">
+
+
+            <div class="project-card">
+
+                <h3>
+                    AutoTheme
+                </h3>
+
+                <p>
+
+                    一个基于 Python 的 Windows 11
+                    自动主题切换工具。
+
+                    <br><br>
+
+                    根据时间自动切换 Windows
+                    深色与浅色模式。
+
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    Coming Soon
+                </h3>
+
+                <p>
+
+                    更多有趣的项目正在制作中。
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- 关于 -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About Me
+        </h2>
+
+        <div class="about">
+
+            <p>
+
+                Hi, I'm Cheansnow.
+
+                <br><br>
+
+                我喜欢探索计算机、编程和各种有趣的技术。
+
+                这里是我的个人网站，
+                也是我记录学习、项目和生活的地方。
+
+                <br><br>
+
+                Welcome to my little corner
+                of the Internet.
+
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- 页脚 -->
+
+<footer>
+
+    © 2026 Cheansnow.
+
+    <br>
+
+    Built with GitHub Pages.
+
+</footer>
+
+
+<!-- 深色模式 -->
+
+<script>
+
+    const button =
+        document.getElementById(
+            "theme-toggle"
+        );
+
+
+    button.addEventListener(
+        "click",
+
+        () => {
+
+            document.body.classList.toggle(
+                "dark"
+            );
+
+
+            if (
+                document.body.classList.contains(
+                    "dark"
+                )
+            ) {
+
+                button.textContent = "☀️";
+
+            } else {
+
+                button.textContent = "🌙";
+
+            }
+
+        }
+
+    );
+
+</script>
+```
+
+</body>
+
+</html>
