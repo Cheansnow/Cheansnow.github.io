@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Restore website music
+        run: base64 --decode .github/assets/looking-back.mp3.base64 > source/music/looking-back.mp3
       - uses: actions/setup-node@v4
         with:
           node-version: 22
