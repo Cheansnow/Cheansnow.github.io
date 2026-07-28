@@ -160,7 +160,6 @@ inject:
     - |
       <style id="opening-animation-override">
         .preloader {
-          display: flex !important;
           background: #17181d !important;
           color: #fff !important;
           opacity: 1;
@@ -216,8 +215,8 @@ plugins:
     # 自主添加歌曲时，在 audios 下继续复制一组；详细步骤见《音乐添加说明.md》。
     audios:
       - name: Looking Back
-        artist:
+        artist: " "
         url: /music/looking-back.mp3
         cover: /images/redefine-avatar.svg
-        lrc:
+        lrc: /music/looking-back.lrc
         theme: "#A31F34"
