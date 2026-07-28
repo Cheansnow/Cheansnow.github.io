@@ -1,0 +1,92 @@
+info:
+  title: Cheansnow
+  subtitle:
+  author: Cheansnow
+  url: https://cheansnow.github.io
+
+defaults:
+  favicon: /images/redefine-favicon.svg
+  logo: /images/redefine-logo.svg
+  avatar: /images/redefine-avatar.svg
+
+colors:
+  primary: "#A31F34"
+  secondary:
+  default_mode: light
+
+font:
+  enable: false
+
+home_banner:
+  enable: true
+  style: fixed
+  title: Cheansnow
+  subtitle:
+    text: []
+  image:
+    light: /images/wallhaven-wqery6-light.webp
+    dark: /images/wallhaven-wqery6-dark.webp
+
+navbar:
+  auto_hide: false
+  color:
+    left: "#F5F4F1"
+    right: "#DEDFF2"
+  links:
+    首页:
+      path: /
+      icon: fa-regular fa-house
+    文章:
+      path: /archives
+      icon: fa-regular fa-pen-nib
+    分类:
+      path: /categories
+      icon: fa-regular fa-folder
+    标签:
+      path: /tags
+      icon: fa-regular fa-tags
+
+home:
+  sidebar:
+    enable: true
+    position: left
+  article_date_format: auto
+  categories: true
+  tags: true
+
+articles:
+  style:
+    font_size: 16px
+    line_height: 1.9
+    image_border_radius: 12px
+  word_count:
+    enable: true
+  author_label:
+    enable: true
+    auto: true
+  code_block:
+    copy: true
+    style: mac
+
+footer:
+  runtime: true
+  start: 2026/07/29 00:00:00
+  customize:
+  icp:
+    enable: false
+
+search:
+  enable: true
+
+local_search:
+  enable: true
+  preload: true
+
+dark_mode:
+  enable: true
+
+lazyload:
+  enable: true
+
+comment:
+  enable: false
