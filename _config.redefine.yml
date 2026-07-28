@@ -85,6 +85,8 @@ navbar:
     enable: true
     preload: true
   links:
+    Home:
+      path: none
     首页:
       path: /
       icon: fa-regular fa-house
