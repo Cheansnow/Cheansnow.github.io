@@ -5,8 +5,8 @@ info:
   url: https://cheansnow.github.io
 
 defaults:
-  favicon: /images/redefine-favicon.svg
-  logo: /images/redefine-logo.svg
+  favicon: /images/redefine-avatar.svg
+  logo: /images/redefine-avatar.svg
   avatar: /images/redefine-avatar.svg
 
 colors:
