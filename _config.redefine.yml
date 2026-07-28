@@ -159,6 +159,49 @@ footer:
 comment:
   enable: false
 
+inject:
+  enable: true
+  head:
+    - |
+      <style id="opening-animation-override">
+        .preloader {
+          display: flex !important;
+          background: #17181d !important;
+          color: #fff !important;
+          opacity: 1;
+          transition: opacity .65s cubic-bezier(.22,.61,.36,1) !important;
+        }
+        .preloader .ml13 {
+          color: #fff !important;
+        }
+        .home-banner-container,
+        .home-banner-background {
+          animation: banner-arrive 1.15s cubic-bezier(.22,.61,.36,1) both;
+          animation-delay: 1.65s;
+        }
+        @keyframes banner-arrive {
+          from { opacity: 0; filter: blur(8px); transform: scale(1.035); }
+          to { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+      </style>
+  footer:
+    - |
+      <script id="opening-animation-timing">
+        (() => {
+          const startedAt = performance.now();
+          const originalHide = window.hidePreloader;
+          if (typeof originalHide !== "function") return;
+          window.hidePreloader = () => {
+            const remaining = 2100 - (performance.now() - startedAt);
+            if (remaining > 0) {
+              window.setTimeout(originalHide, remaining);
+            } else {
+              originalHide();
+            }
+          };
+        })();
+      </script>
+
 page_templates:
   tags_style: blur
   masonry:
