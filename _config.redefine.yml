@@ -130,7 +130,7 @@ articles:
     count: true
     min2read: true
   author_label:
-    enable: true
+    enable: false
     auto: true
   code_block:
     copy: true
