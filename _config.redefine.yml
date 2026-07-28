@@ -199,6 +199,62 @@ inject:
           };
         })();
       </script>
+    - |
+      <script id="music-autoplay">
+        (() => {
+          const playMusic = () => {
+            const button = document.querySelector(
+              "#aplayer .aplayer-button.aplayer-play"
+            );
+            if (!button) return false;
+            button.click();
+            return true;
+          };
+
+          const removeUnlockListeners = () => {
+            document.removeEventListener("pointerdown", unlockMusic);
+            document.removeEventListener("touchstart", unlockMusic);
+            document.removeEventListener("click", unlockMusic);
+            document.removeEventListener("keydown", unlockMusic);
+          };
+
+          const unlockMusic = (event) => {
+            if (event.target?.closest?.("#aplayer")) return;
+            playMusic();
+            window.setTimeout(() => {
+              if (
+                document.querySelector(
+                  "#aplayer .aplayer-button.aplayer-pause"
+                )
+              ) {
+                removeUnlockListeners();
+              }
+            }, 300);
+          };
+
+          document.addEventListener("pointerdown", unlockMusic);
+          document.addEventListener("touchstart", unlockMusic, { passive: true });
+          document.addEventListener("click", unlockMusic);
+          document.addEventListener("keydown", unlockMusic);
+
+          window.addEventListener(
+            "load",
+            () => {
+              window.setTimeout(playMusic, 350);
+              window.setTimeout(() => {
+                if (
+                  document.querySelector(
+                    "#aplayer .aplayer-button.aplayer-pause"
+                  )
+                ) {
+                  removeUnlockListeners();
+                }
+              }, 900);
+            },
+            { once: true }
+          );
+        })();
+      </script>
 
 page_templates:
   tags_style: blur
