@@ -175,6 +175,10 @@ inject:
         .preloader .ml13 {
           color: #fff !important;
         }
+        .typed-cursor.typed-cursor--blink {
+          animation-duration: .875s !important;
+          -webkit-animation-duration: .875s !important;
+        }
         .home-banner-container,
         .home-banner-background {
           animation: banner-arrive 1.15s cubic-bezier(.22,.61,.36,1) both;
