@@ -43,10 +43,9 @@ home_banner:
   subtitle:
     text:
       - 在这里填写首页副标题
-      - 支持多条文字循环显示
     typing_speed: 95
     backing_speed: 60
-    starting_delay: 450
+    starting_delay: 2600
     backing_delay: 1500
     loop: false
     smart_backspace: true
