@@ -217,4 +217,12 @@ plugins:
   feed:
     enable: true
   aplayer:
-    enable: false
+    enable: true
+    type: fixed
+    audios:
+      - name: Emotional Piano
+        artist: triangelx
+        url: https://upload.wikimedia.org/wikipedia/commons/transcoded/7/70/Emotional_piano.wav/Emotional_piano.wav.mp3
+        cover: /images/redefine-avatar.svg
+        lrc:
+        theme: "#A31F34"
