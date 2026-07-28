@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Restore website music
-        run: cat .github/assets/looking-back.part-* | base64 --decode > source/music/looking-back.mp3
+        run: cat .github/assets/looking-back-m4a.part-* | base64 --decode > source/music/looking-back.m4a
       - uses: actions/setup-node@v4
         with:
           node-version: 22
