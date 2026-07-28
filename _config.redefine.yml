@@ -48,7 +48,7 @@ home_banner:
     backing_speed: 60
     starting_delay: 450
     backing_delay: 1500
-    loop: true
+    loop: false
     smart_backspace: true
   image:
     light: /images/wallhaven-wqery6-light.webp
