@@ -219,6 +219,7 @@ plugins:
   aplayer:
     enable: true
     type: fixed
+    # 自主添加歌曲时，在 audios 下继续复制一组；详细步骤见《音乐添加说明.md》。
     audios:
       - name: Emotional Piano
         artist: triangelx
