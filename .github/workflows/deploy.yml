@@ -1,6 +1,9 @@
 name: Deploy Hexo blog
 
 on:
+  push:
+    branches:
+      - hexo-source
   workflow_dispatch:
 
 permissions:
