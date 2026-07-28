@@ -14,24 +14,61 @@ colors:
   secondary:
   default_mode: light
 
-font:
-  enable: false
+global:
+  content_max_width: 1100px
+  sidebar_width: 230px
+  hover:
+    shadow: true
+    scale: true
+  scroll_progress:
+    bar: true
+    percentage: true
+  single_page: true
+  preloader:
+    enable: true
+    custom_message: Cheansnow
+  side_tools:
+    gear_rotation: true
+    auto_expand: false
+  website_counter:
+    enable: false
+  open_graph:
+    enable: true
+    image: /images/redefine-og.webp
 
 home_banner:
   enable: true
   style: fixed
   title: Cheansnow
   subtitle:
-    text: []
+    text:
+      - 在这里填写首页副标题
+      - 支持多条文字循环显示
+    typing_speed: 95
+    backing_speed: 60
+    starting_delay: 450
+    backing_delay: 1500
+    loop: true
+    smart_backspace: true
   image:
     light: /images/wallhaven-wqery6-light.webp
     dark: /images/wallhaven-wqery6-dark.webp
+  text_color:
+    light: "#ffffff"
+    dark: "#e5e5e5"
 
 navbar:
-  auto_hide: false
+  auto_hide: true
   color:
     left: "#F5F4F1"
     right: "#DEDFF2"
+    transparency: 35
+  width:
+    home: 1200px
+    pages: 1100px
+  search:
+    enable: true
+    preload: true
   links:
     首页:
       path: /
@@ -50,43 +87,70 @@ home:
   sidebar:
     enable: true
     position: left
+    first_item: menu
+    announcement:
+    show_on_mobile: true
   article_date_format: auto
-  categories: true
-  tags: true
+  excerpt_length: 200
+  categories:
+    enable: true
+    limit: 3
+  tags:
+    enable: true
+    limit: 3
 
 articles:
   style:
     font_size: 16px
     line_height: 1.9
     image_border_radius: 12px
+    image_alignment: center
+    image_caption: true
+    link_icon: true
+    title_alignment: left
   word_count:
     enable: true
+    count: true
+    min2read: true
   author_label:
     enable: true
     auto: true
   code_block:
     copy: true
     style: mac
+    highlight_theme:
+      light: github
+      dark: tokyo-night-dark
+  toc:
+    enable: true
+    max_depth: 3
+    number: false
+    expand: true
+    init_open: true
+  copyright:
+    enable: true
+    default: all_rights_reserved
+  lazyload: true
 
 footer:
   runtime: true
   start: 2026/07/29 00:00:00
   customize:
+  statistics: true
   icp:
     enable: false
 
-search:
-  enable: true
-
-local_search:
-  enable: true
-  preload: true
-
-dark_mode:
-  enable: true
-
-lazyload:
-  enable: true
-
 comment:
   enable: false
+
+page_templates:
+  tags_style: blur
+  masonry:
+    batch_size: 12
+    initial_batch_size: 24
+
+plugins:
+  feed:
+    enable: true
+  aplayer:
+    enable: false
