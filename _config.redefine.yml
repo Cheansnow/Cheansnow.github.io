@@ -49,9 +49,6 @@ home_banner:
     backing_delay: 1500
     loop: false
     smart_backspace: true
-  image:
-    light: /images/wallhaven-wqery6-light.webp
-    dark: /images/wallhaven-wqery6-dark.webp
   text_color:
     light: "#ffffff"
     dark: "#e5e5e5"
@@ -71,6 +68,9 @@ home_banner:
         url: "#"
       - icon: fa-solid fa-robot
         url: "#"
+  image:
+    light: /images/wallhaven-wqery6-light.webp
+    dark: /images/wallhaven-wqery6-dark.webp
 
 navbar:
   auto_hide: true
@@ -108,13 +108,9 @@ home:
     announcement:
     show_on_mobile: true
   article_date_format: auto
+  categories: true
+  tags: true
   excerpt_length: 200
-  categories:
-    enable: true
-    limit: 3
-  tags:
-    enable: true
-    limit: 3
 
 articles:
   style:
@@ -127,8 +123,6 @@ articles:
     title_alignment: left
   word_count:
     enable: true
-    count: true
-    min2read: true
   author_label:
     enable: false
     auto: true
@@ -153,9 +147,9 @@ footer:
   runtime: true
   start: 2026/07/29 00:00:00
   customize:
-  statistics: true
   icp:
     enable: false
+  statistics: true
 
 comment:
   enable: false
@@ -221,9 +215,9 @@ plugins:
     type: fixed
     # 自主添加歌曲时，在 audios 下继续复制一组；详细步骤见《音乐添加说明.md》。
     audios:
-      - name: Emotional Piano
-        artist: triangelx
-        url: https://upload.wikimedia.org/wikipedia/commons/transcoded/7/70/Emotional_piano.wav/Emotional_piano.wav.mp3
+      - name: Looking Back
+        artist:
+        url: /music/looking-back.mp3
         cover: /images/redefine-avatar.svg
         lrc:
         theme: "#A31F34"
