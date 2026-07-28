@@ -272,7 +272,7 @@ plugins:
     audios:
       - name: Looking Back
         artist: " "
-        url: /music/looking-back.mp3
+        url: /music/looking-back.m4a
         cover: /images/redefine-avatar.svg
         lrc: /music/looking-back.lrc
         theme: "#A31F34"
