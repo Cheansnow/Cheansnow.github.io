@@ -56,6 +56,22 @@ home_banner:
   text_color:
     light: "#ffffff"
     dark: "#e5e5e5"
+  text_style:
+    title_size: 2.8rem
+    subtitle_size: 1.5rem
+    line_height: 1.2
+  social_links:
+    enable: true
+    style: default
+    links:
+      - icon: github
+        url: https://github.com/Cheansnow
+      - icon: instagram
+        url: "#"
+      - icon: email
+        url: "#"
+      - icon: fa-solid fa-robot
+        url: "#"
 
 navbar:
   auto_hide: true
