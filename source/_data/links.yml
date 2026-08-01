@@ -1,0 +1,9 @@
+- links_category: Friends
+  has_thumbnail: false
+  list:
+    - name: Ryo
+      link: https://zhangjianqiao-jp.github.io/
+      description: Ryo's blog
+    - name: April
+      link: https://chenyuchun.top
+      description: April's blog

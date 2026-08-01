@@ -99,6 +99,9 @@ navbar:
     标签:
       path: /tags
       icon: fa-regular fa-tags
+    友链:
+      path: /friends
+      icon: fa-regular fa-link
     关于我:
       path: /about
       icon: fa-regular fa-user
