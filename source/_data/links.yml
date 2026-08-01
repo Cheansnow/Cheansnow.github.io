@@ -3,7 +3,9 @@
   list:
     - name: Ryo
       link: https://zhangjianqiao-jp.github.io/
+      avatar: /images/friends/ryo.png
       description: Ryo's blog
     - name: April
       link: https://chenyuchun.top
+      avatar: /images/friends/april.svg
       description: April's blog
