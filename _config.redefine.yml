@@ -1,7 +1,7 @@
 info:
-  title: Cheansnow
-  subtitle:
-  author: Cheansnow
+  title: Chean
+  subtitle: Ever to Apogee.
+  author: Chean
   url: https://cheansnow.github.io
 
 defaults:
@@ -26,7 +26,7 @@ global:
   single_page: true
   preloader:
     enable: true
-    custom_message: Cheansnow
+    custom_message: Chean
   side_tools:
     gear_rotation: true
     auto_expand: false
@@ -39,10 +39,10 @@ global:
 home_banner:
   enable: true
   style: fixed
-  title: Cheansnow
+  title: Chean
   subtitle:
     text:
-      - 在这里填写首页副标题
+      - 愿你某日能与你所珍视的人重逢。
     typing_speed: 95
     backing_speed: 60
     starting_delay: 2600
@@ -63,14 +63,14 @@ home_banner:
       - icon: github
         url: https://github.com/Cheansnow
       - icon: instagram
-        url: "#"
+        url: https://www.instagram.com/cheansnow/
       - icon: email
-        url: "#"
-      - icon: fa-solid fa-robot
-        url: "#"
+        url: mailto:cheansnow@gmail.com
+      - icon: fa-brands fa-bilibili
+        url: https://space.bilibili.com/483213283?spm_id_from=333.1007.0.0
   image:
-    light: /images/wallhaven-wqery6-light.webp
-    dark: /images/wallhaven-wqery6-dark.webp
+    light: /images/home-background.jpg
+    dark: /images/home-background.jpg
 
 navbar:
   auto_hide: true
@@ -90,15 +90,18 @@ navbar:
     首页:
       path: /
       icon: fa-regular fa-house
-    文章:
+    归档:
       path: /archives
-      icon: fa-regular fa-pen-nib
+      icon: fa-regular fa-archive
     分类:
       path: /categories
       icon: fa-regular fa-folder
     标签:
       path: /tags
       icon: fa-regular fa-tags
+    关于我:
+      path: /about
+      icon: fa-regular fa-user
 
 home:
   sidebar:
@@ -123,6 +126,8 @@ articles:
     title_alignment: left
   word_count:
     enable: true
+    count: true
+    min2read: false
   author_label:
     enable: false
     auto: true
@@ -152,7 +157,21 @@ footer:
   statistics: true
 
 comment:
-  enable: false
+  enable: true
+  system: giscus
+  config:
+    giscus:
+      repo: Cheansnow/Cheansnow.github.io
+      repo_id: R_kgDOTfql8Q
+      category: General
+      category_id: DIC_kwDOTfql8c4DCPIn
+      mapping: pathname
+      strict: 0
+      reactions_enabled: 1
+      emit_metadata: 0
+      lang: zh-CN
+      input_position: bottom
+      loading: lazy
 
 inject:
   enable: true
@@ -183,6 +202,33 @@ inject:
         }
       </style>
     - |
+      <style id="article-meta-cleanup-style">
+        .article-meta-info > .article-date:first-of-type,
+        .article-meta-info > .article-min2read {
+          display: none !important;
+        }
+      </style>
+      <script id="article-meta-cleanup">
+        (() => {
+          const updateArticleMeta = () => {
+            document
+              .querySelectorAll(".article-meta-info .fa-wrench, .article-meta-info .fa-pen-fancy")
+              .forEach((icon) => {
+                icon.classList.remove("fa-wrench", "fa-pen-fancy");
+                icon.classList.add("fa-pen-nib");
+              });
+          };
+
+          updateArticleMeta();
+          document.addEventListener("DOMContentLoaded", updateArticleMeta);
+          document.addEventListener("swup:contentReplaced", updateArticleMeta);
+          new MutationObserver(updateArticleMeta).observe(document.documentElement, {
+            childList: true,
+            subtree: true
+          });
+        })();
+      </script>
+    - |
       <style id="music-player-toggle-style">
         .aplayer.aplayer-fixed .aplayer-miniswitcher {
           cursor: pointer;
@@ -212,6 +258,175 @@ inject:
           }
         }
       </style>
+    - |
+      <style id="home-scroll-blur-style">
+        :root {
+          --home-scroll-blur: 0px;
+          --home-scroll-brightness: 1;
+          --home-scroll-scale: 1;
+          --home-scroll-dim: 0;
+        }
+        .home-banner-background {
+          overflow: hidden;
+        }
+        .home-banner-background img {
+          filter:
+            blur(var(--home-scroll-blur))
+            brightness(var(--home-scroll-brightness));
+          transform: scale(var(--home-scroll-scale));
+          transform-origin: center center;
+          transition:
+            filter 80ms linear,
+            transform 80ms linear;
+          will-change: filter, transform;
+        }
+        .home-banner-background::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: rgba(8, 10, 18, var(--home-scroll-dim));
+          transition: background 80ms linear;
+        }
+      </style>
+    - |
+      <style id="article-learning-template-style">
+        .chean-note-box,
+        .chean-comment-box {
+          border: 1px solid rgba(255, 255, 255, .12);
+          border-radius: 18px;
+          background:
+            linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+          padding: 1.25rem 1.35rem;
+          margin: 1.6rem 0;
+          box-shadow: 0 18px 48px rgba(0, 0, 0, .12);
+          backdrop-filter: blur(14px);
+        }
+
+        .chean-note-box p:last-child,
+        .chean-comment-box p:last-child {
+          margin-bottom: 0;
+        }
+
+        .chean-reading-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1rem;
+          margin: 1.25rem 0 2rem;
+        }
+
+        .chean-reading-card {
+          display: block;
+          overflow: hidden;
+          border-radius: 18px;
+          border: 1px solid rgba(255, 255, 255, .12);
+          background: rgba(255, 255, 255, .05);
+          color: inherit;
+          text-decoration: none !important;
+          box-shadow: 0 16px 36px rgba(0, 0, 0, .13);
+          transition:
+            transform .22s ease,
+            box-shadow .22s ease,
+            border-color .22s ease;
+        }
+
+        .chean-reading-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(163, 31, 52, .55);
+          box-shadow: 0 22px 52px rgba(0, 0, 0, .22);
+        }
+
+        .chean-reading-card img {
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+          display: block;
+          border-radius: 0 !important;
+          margin: 0 !important;
+        }
+
+        .chean-reading-card figure {
+          margin: 0 !important;
+          border-radius: 0 !important;
+          overflow: hidden;
+        }
+
+        .chean-reading-card figure img {
+          width: 100% !important;
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+          display: block;
+        }
+
+        .chean-reading-card figcaption,
+        .chean-reading-card .image-caption figcaption {
+          display: none !important;
+        }
+
+        .chean-reading-card-title {
+          padding: .85rem 1rem 1rem;
+          font-weight: 700;
+          text-align: center;
+        }
+
+        .chean-comment-placeholder {
+          min-height: 150px;
+          border: 1px dashed rgba(255, 255, 255, .22);
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: var(--second-text-color);
+          background: rgba(255, 255, 255, .035);
+        }
+
+        .comments-container {
+          border: 1px solid rgba(255, 255, 255, .12);
+          border-radius: 18px;
+          background:
+            linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+          padding: 1.2rem 1.35rem;
+          margin-top: 2.4rem;
+          box-shadow: 0 18px 48px rgba(0, 0, 0, .12);
+          backdrop-filter: blur(14px);
+        }
+
+        .article-copyright-info-container li:last-child {
+          display: none !important;
+        }
+
+        #giscus-container,
+        .giscus,
+        iframe.giscus-frame {
+          max-width: 100% !important;
+        }
+
+        #giscus-container {
+          min-height: 170px;
+          position: relative;
+        }
+
+        #giscus-container:not(.chean-comments-loaded)::before {
+          content: "Giscus 评论区正在加载。若一直停在这里，请确认 Discussions 已开启，并且 Giscus 已授权到 Cheansnow.github.io 仓库。";
+          min-height: 150px;
+          border: 1px dashed rgba(255, 255, 255, .22);
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 1rem;
+          color: var(--second-text-color);
+          background: rgba(255, 255, 255, .035);
+        }
+
+        @media (max-width: 768px) {
+          .chean-reading-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
   footer:
     - |
       <script id="opening-animation-timing">
@@ -230,59 +445,226 @@ inject:
         })();
       </script>
     - |
+      <script id="home-background-scroll-blur">
+        (() => {
+          const clamp = (value, min, max) =>
+            Math.min(max, Math.max(min, value));
+
+          const updateHomeBlur = () => {
+            const root = document.documentElement;
+            const progress = clamp(
+              window.scrollY / (window.innerHeight * 0.7),
+              0,
+              1
+            );
+            const eased = 1 - Math.pow(1 - progress, 2);
+
+            root.style.setProperty(
+              "--home-scroll-blur",
+              `${(eased * 12).toFixed(2)}px`
+            );
+            root.style.setProperty(
+              "--home-scroll-brightness",
+              (1 - eased * 0.18).toFixed(3)
+            );
+            root.style.setProperty(
+              "--home-scroll-scale",
+              (1 + eased * 0.035).toFixed(3)
+            );
+            root.style.setProperty(
+              "--home-scroll-dim",
+              (eased * 0.18).toFixed(3)
+            );
+          };
+
+          updateHomeBlur();
+          window.addEventListener("scroll", updateHomeBlur, { passive: true });
+          window.addEventListener("resize", updateHomeBlur);
+          document.addEventListener("swup:contentReplaced", updateHomeBlur);
+        })();
+      </script>
+    - |
       <script id="music-autoplay">
         (() => {
-          const playMusic = () => {
-            const button = document.querySelector(
-              "#aplayer .aplayer-button.aplayer-play"
-            );
-            if (!button) return false;
-            button.click();
-            return true;
+          const previous = window.__cheanMusicAutoplay;
+          if (previous?.cleanup) previous.cleanup();
+
+          const pausedPreferenceKey = "chean-music-user-paused";
+          if (!window.__cheanMusicSessionInitialized) {
+            const navigation =
+              performance.getEntriesByType("navigation")[0];
+            if (navigation?.type === "reload") {
+              sessionStorage.removeItem(pausedPreferenceKey);
+            }
+            window.__cheanMusicSessionInitialized = true;
+          }
+
+          const isUserPaused = () =>
+            sessionStorage.getItem(pausedPreferenceKey) === "true";
+
+          const setUserPaused = (paused) => {
+            if (paused) {
+              sessionStorage.setItem(pausedPreferenceKey, "true");
+            } else {
+              sessionStorage.removeItem(pausedPreferenceKey);
+            }
+          };
+
+          const state = {
+            audio: window.__cheanAPlayerAudio || null,
+            originalCreateElement: null,
+            unlockArmed: false,
+            lastWheelAttempt: 0,
           };
 
           const removeUnlockListeners = () => {
-            document.removeEventListener("pointerdown", unlockMusic);
-            document.removeEventListener("touchstart", unlockMusic);
-            document.removeEventListener("click", unlockMusic);
-            document.removeEventListener("keydown", unlockMusic);
+            if (!state.unlockArmed) return;
+            state.unlockArmed = false;
+            document.removeEventListener("pointerdown", unlockMusic, true);
+            document.removeEventListener("touchstart", unlockMusic, true);
+            document.removeEventListener("keydown", unlockMusic, true);
+            document.removeEventListener("wheel", unlockMusic, true);
           };
 
-          const unlockMusic = (event) => {
-            if (event.target?.closest?.("#aplayer")) return;
-            playMusic();
-            window.setTimeout(() => {
-              if (
-                document.querySelector(
-                  "#aplayer .aplayer-button.aplayer-pause"
-                )
-              ) {
-                removeUnlockListeners();
+          const attemptPlay = async () => {
+            const audio = state.audio;
+            if (!audio) return false;
+            if (isUserPaused()) return false;
+            if (!audio.paused && !audio.ended) {
+              removeUnlockListeners();
+              return true;
+            }
+
+            audio.autoplay = true;
+            audio.preload = "auto";
+            audio.muted = false;
+            audio.volume = 0.7;
+
+            try {
+              await audio.play();
+              removeUnlockListeners();
+              return true;
+            } catch (error) {
+              armUnlockListeners();
+              return false;
+            }
+          };
+
+          function unlockMusic(event) {
+            if (event?.target?.closest?.("#aplayer")) {
+              removeUnlockListeners();
+              return;
+            }
+
+            if (event?.type === "wheel") {
+              const now = Date.now();
+              if (now - state.lastWheelAttempt < 800) return;
+              state.lastWheelAttempt = now;
+            }
+
+            attemptPlay();
+          }
+
+          function armUnlockListeners() {
+            if (isUserPaused()) return;
+            if (state.unlockArmed) return;
+            state.unlockArmed = true;
+            document.addEventListener("pointerdown", unlockMusic, true);
+            document.addEventListener("touchstart", unlockMusic, {
+              passive: true,
+              capture: true,
+            });
+            document.addEventListener("keydown", unlockMusic, true);
+            document.addEventListener("wheel", unlockMusic, {
+              passive: true,
+              capture: true,
+            });
+          }
+
+          const rememberPlayerChoice = (event) => {
+            const button = event.target?.closest?.(
+              "#aplayer .aplayer-button"
+            );
+            if (!button) return;
+
+            if (button.classList.contains("aplayer-pause")) {
+              setUserPaused(true);
+              removeUnlockListeners();
+            } else if (button.classList.contains("aplayer-play")) {
+              setUserPaused(false);
+            }
+          };
+
+          const restoreCreateElement = () => {
+            if (!state.originalCreateElement) return;
+            document.createElement = state.originalCreateElement;
+            state.originalCreateElement = null;
+          };
+
+          const captureAudio = (audio) => {
+            if (state.audio) return;
+            state.audio = audio;
+            window.__cheanAPlayerAudio = audio;
+            restoreCreateElement();
+            if (!isUserPaused()) {
+              window.setTimeout(attemptPlay, 80);
+            }
+          };
+
+          document.addEventListener("click", rememberPlayerChoice, true);
+
+          if (!state.audio) {
+            state.originalCreateElement = document.createElement;
+            document.createElement = function(tagName, options) {
+              const element = state.originalCreateElement.call(
+                this,
+                tagName,
+                options
+              );
+              if (String(tagName).toLowerCase() === "audio") {
+                captureAudio(element);
               }
-            }, 300);
+              return element;
+            };
+
+            if (!isUserPaused()) {
+              armUnlockListeners();
+            }
+          }
+
+          state.cleanup = () => {
+            removeUnlockListeners();
+            restoreCreateElement();
+            document.removeEventListener(
+              "click",
+              rememberPlayerChoice,
+              true
+            );
+          };
+          window.__cheanMusicAutoplay = state;
+        })();
+      </script>
+    - |
+      <script id="comments-loading-state">
+        (() => {
+          const markCommentsLoaded = () => {
+            const container = document.getElementById("giscus-container");
+            if (!container) return;
+            if (container.querySelector("iframe.giscus-frame")) {
+              container.classList.add("chean-comments-loaded");
+            }
           };
 
-          document.addEventListener("pointerdown", unlockMusic);
-          document.addEventListener("touchstart", unlockMusic, { passive: true });
-          document.addEventListener("click", unlockMusic);
-          document.addEventListener("keydown", unlockMusic);
+          const watchComments = () => {
+            const container = document.getElementById("giscus-container");
+            if (!container) return;
+            markCommentsLoaded();
+            const observer = new MutationObserver(markCommentsLoaded);
+            observer.observe(container, { childList: true, subtree: true });
+          };
 
-          window.addEventListener(
-            "load",
-            () => {
-              window.setTimeout(playMusic, 350);
-              window.setTimeout(() => {
-                if (
-                  document.querySelector(
-                    "#aplayer .aplayer-button.aplayer-pause"
-                  )
-                ) {
-                  removeUnlockListeners();
-                }
-              }, 900);
-            },
-            { once: true }
-          );
+          document.addEventListener("DOMContentLoaded", watchComments);
+          document.addEventListener("swup:contentReplaced", watchComments);
         })();
       </script>
 
@@ -298,11 +680,52 @@ plugins:
   aplayer:
     enable: true
     type: fixed
-    # 自主添加歌曲时，在 audios 下继续复制一组；详细步骤见《音乐添加说明.md》。
     audios:
-      - name: Looking Back
-        artist: " "
-        url: /music/looking-back.m4a
+      - name: The Afternoon Of Rainy day
+        artist: 柏大輔
+        url: /music/01-the-afternoon-of-rainy-day.mp3
+        cover: /images/music-covers/01-the-afternoon-of-rainy-day.jpg
+        lrc: /music/blank.lrc
+        theme: "#A31F34"
+      - name: 二人の時間
+        artist: RADWIMPS
+        url: /music/02-futari-no-jikan.mp3
+        cover: /images/music-covers/02-futari-no-jikan.png
+        lrc: /music/blank.lrc
+        theme: "#A31F34"
+      - name: The Portrait
+        artist: James Horner
+        url: /music/03-the-portrait.mp3
+        cover: /images/music-covers/03-the-portrait.jpg
+        lrc: /music/blank.lrc
+        theme: "#A31F34"
+      - name: 朝焼けのスターマイン [Piano Version.]
+        artist: 横山克
+        url: /music/04-asayake-no-starmine-piano.mp3
+        cover: /images/music-covers/04-asayake-no-starmine-piano.jpg
+        lrc: /music/blank.lrc
+        theme: "#A31F34"
+      - name: 月亮代表我的心
+        artist: Hyperentropist
+        url: /music/05-moon-represents-my-heart.mp3
         cover: /images/redefine-avatar.svg
-        lrc: /music/looking-back.lrc
+        lrc: /music/blank.lrc
+        theme: "#A31F34"
+      - name: I Will Become a Cat
+        artist: 横山克
+        url: /music/06-i-will-become-a-cat.mp3
+        cover: /images/music-covers/06-i-will-become-a-cat.jpg
+        lrc: /music/blank.lrc
+        theme: "#A31F34"
+      - name: Looking Back
+        artist: 横山克
+        url: /music/07-looking-back.mp3
+        cover: /images/music-covers/07-looking-back.jpg
+        lrc: /music/blank.lrc
+        theme: "#A31F34"
+      - name: 私の嘘～PianoSolo
+        artist: 横山克
+        url: /music/08-watashi-no-uso-pianosolo.mp3
+        cover: /images/redefine-avatar.svg
+        lrc: /music/blank.lrc
         theme: "#A31F34"
