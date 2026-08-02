@@ -5,7 +5,7 @@ info:
   url: https://cheansnow.github.io
 
 defaults:
-  favicon: /images/chean-favicon-20260803.png
+  favicon: /favicon-192x192.png
   logo: /images/redefine-avatar.svg
   avatar: /images/redefine-avatar.svg
 
@@ -182,6 +182,14 @@ comment:
 inject:
   enable: true
   head:
+    - |
+      <link rel="icon" href="/favicon.ico" sizes="any">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-precomposed.png">
+      <link rel="manifest" href="/site.webmanifest">
     - |
       <script id="runtime-initial-value">
         (() => {
