@@ -183,13 +183,17 @@ inject:
   enable: true
   head:
     - |
-      <link rel="icon" href="/favicon.ico" sizes="any">
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-      <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-precomposed.png">
-      <link rel="manifest" href="/site.webmanifest">
+      <link rel="icon" href="https://cheansnow.github.io/favicon.ico" sizes="any">
+      <link rel="shortcut icon" href="https://cheansnow.github.io/favicon.ico">
+      <link rel="icon" type="image/png" sizes="16x16" href="https://cheansnow.github.io/favicon-16x16.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="https://cheansnow.github.io/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="48x48" href="https://cheansnow.github.io/favicon-48x48.png">
+      <link rel="icon" type="image/png" sizes="192x192" href="https://cheansnow.github.io/favicon-192x192.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://cheansnow.github.io/apple-touch-icon.png">
+      <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://cheansnow.github.io/apple-touch-icon-precomposed.png">
+      <meta name="apple-mobile-web-app-title" content="Chean">
+      <meta name="application-name" content="Chean">
+      <link rel="manifest" href="https://cheansnow.github.io/site.webmanifest">
     - |
       <script id="runtime-initial-value">
         (() => {
