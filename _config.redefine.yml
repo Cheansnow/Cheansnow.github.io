@@ -1,6 +1,6 @@
 info:
   title: Chean
-  subtitle: Ever to Apogee.
+  subtitle: 愿此行，终抵群星
   author: Chean
   url: https://cheansnow.github.io
 
@@ -31,7 +31,10 @@ global:
     gear_rotation: true
     auto_expand: false
   website_counter:
-    enable: false
+    enable: true
+    site_pv: true
+    site_uv: true
+    post_pv: false
   open_graph:
     enable: true
     image: /images/redefine-og.webp
@@ -265,7 +268,7 @@ inject:
       </style>
     - |
       <style id="article-meta-cleanup-style">
-        .article-meta-info > .article-date:first-of-type,
+        .article-meta-info > .article-date:first-of-type + .article-date,
         .article-meta-info > .article-min2read {
           display: none !important;
         }
