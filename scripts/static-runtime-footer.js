@@ -1,6 +1,3 @@
-const fs = require("fs");
-const path = require("path");
-
 const FALLBACK_START_TIME = "2026/07/29 00:00:00";
 
 function getRuntimeParts(startTime) {
@@ -23,21 +20,6 @@ function getRuntimeParts(startTime) {
   };
 }
 
-function walkHtmlFiles(dir, files = []) {
-  if (!fs.existsSync(dir)) return files;
-
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      walkHtmlFiles(fullPath, files);
-    } else if (entry.isFile() && entry.name.endsWith(".html")) {
-      files.push(fullPath);
-    }
-  }
-
-  return files;
-}
-
 function replaceRuntimeOdometer(html, values) {
   let output = html;
 
@@ -46,26 +28,30 @@ function replaceRuntimeOdometer(html, values) {
       `<span\\b(?=[^>]*\\bid=["']${id}["'])(?=[^>]*\\bclass=["'][^"']*\\bodometer\\b[^"']*["'])[^>]*>\\s*<\\/span>`,
       "g"
     );
-    output = output.replace(spanPattern, `<span id="${id}">${value}</span>`);
+    output = output.replace(
+      spanPattern,
+      `<span id="${id}" data-runtime-static="true">${value}</span>`
+    );
   }
 
   return output;
 }
 
-hexo.on("generateAfter", () => {
+function getFooterConfig() {
   const themeConfig = hexo.theme && hexo.theme.config ? hexo.theme.config : {};
-  const footerConfig = themeConfig.footer || {};
+  return themeConfig.footer || {};
+}
 
-  if (footerConfig.runtime !== true) return;
+hexo.extend.filter.register("after_render:html", (html) => {
+  const footerConfig = getFooterConfig();
+  if (footerConfig.runtime !== true) return html;
 
-  const values = getRuntimeParts(footerConfig.start);
-  const publicDir = hexo.public_dir;
-
-  for (const htmlFile of walkHtmlFiles(publicDir)) {
-    const original = fs.readFileSync(htmlFile, "utf8");
-    const updated = replaceRuntimeOdometer(original, values);
-    if (updated !== original) {
-      fs.writeFileSync(htmlFile, updated);
-    }
+  if (
+    !html.includes('id="runtime_days"') &&
+    !html.includes("id='runtime_days'")
+  ) {
+    return html;
   }
+  const values = getRuntimeParts(footerConfig.start);
+  return replaceRuntimeOdometer(html, values);
 });
