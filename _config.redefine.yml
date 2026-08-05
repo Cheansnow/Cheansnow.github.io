@@ -766,16 +766,16 @@ plugins:
         cover: /images/music-covers/01-the-afternoon-of-rainy-day.jpg
         lrc: /music/blank.lrc
         theme: "#A31F34"
-      - name: 二人の時間
-        artist: RADWIMPS
-        url: /music/02-futari-no-jikan.mp3
-        cover: /images/music-covers/02-futari-no-jikan.png
-        lrc: /music/blank.lrc
-        theme: "#A31F34"
       - name: The Portrait
         artist: James Horner
         url: /music/03-the-portrait.mp3
         cover: /images/music-covers/03-the-portrait.jpg
+        lrc: /music/blank.lrc
+        theme: "#A31F34"
+      - name: 二人の時間
+        artist: RADWIMPS
+        url: /music/02-futari-no-jikan.mp3
+        cover: /images/music-covers/02-futari-no-jikan.png
         lrc: /music/blank.lrc
         theme: "#A31F34"
       - name: 朝焼けのスターマイン [Piano Version.]
