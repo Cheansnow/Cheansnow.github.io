@@ -183,6 +183,12 @@ inject:
   enable: true
   head:
     - |
+      <style id="national-day-home-cover-position">
+        .home-article-thumbnail img[src="/images/posts/2026-national-day-holiday/cover.jpg"] {
+          object-position: center 22%;
+        }
+      </style>
+    - |
       <link rel="icon" href="https://cheansnow.github.io/favicon.ico" sizes="any">
       <link rel="shortcut icon" href="https://cheansnow.github.io/favicon.ico">
       <link rel="icon" type="image/png" sizes="16x16" href="https://cheansnow.github.io/favicon-16x16.png">
