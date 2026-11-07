@@ -37,7 +37,8 @@ global:
     post_pv: false
   open_graph:
     enable: true
-    image: /images/redefine-og.webp
+    description: 愿此行，终抵群星
+    image: /images/chean-home-preview-20261107.png
 
 home_banner:
   enable: true
