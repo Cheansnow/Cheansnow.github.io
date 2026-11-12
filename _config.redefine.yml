@@ -190,6 +190,34 @@ inject:
         }
       </style>
     - |
+      <style id="photo-original-download-style">
+        .image-viewer-container .photo-original-download:not([hidden]) {
+          position: absolute;
+          top: 4%;
+          right: calc(4% + 54px);
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          min-height: 44px;
+          padding: 0 14px;
+          border: 1px solid var(--border-color);
+          border-radius: 999px;
+          background: var(--background-color-transparent);
+          color: var(--default-text-color);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          font-size: 13px;
+          text-decoration: none;
+        }
+        .image-viewer-container .photo-original-download:hover {
+          background: var(--background-color-transparent-80);
+        }
+        .image-viewer-container .photo-original-download[hidden] {
+          display: none;
+        }
+      </style>
+    - |
       <link rel="icon" href="https://cheansnow.github.io/favicon.ico" sizes="any">
       <link rel="shortcut icon" href="https://cheansnow.github.io/favicon.ico">
       <link rel="icon" type="image/png" sizes="16x16" href="https://cheansnow.github.io/favicon-16x16.png">
@@ -514,6 +542,8 @@ inject:
         }
       </style>
   footer:
+    - |
+      <script src="/js/photo-originals.js?v=20261112-3" defer></script>
     - |
       <script id="opening-animation-timing">
         (() => {
