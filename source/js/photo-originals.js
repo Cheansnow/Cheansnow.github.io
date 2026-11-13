@@ -68,4 +68,15 @@
   mountViewerButton();
   document.addEventListener("DOMContentLoaded", mountViewerButton);
   window.addEventListener("redefine:page:refresh", mountViewerButton);
+
+  const mountAfterNavigation = () => {
+    window.swup?.hooks?.on("page:view", mountViewerButton);
+  };
+  if (window.swup?.hooks) {
+    mountAfterNavigation();
+  } else {
+    window.addEventListener("redefine:swup:ready", mountAfterNavigation, {
+      once: true,
+    });
+  }
 })();

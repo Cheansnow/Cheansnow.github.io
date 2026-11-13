@@ -543,7 +543,7 @@ inject:
       </style>
   footer:
     - |
-      <script src="/js/photo-originals.js?v=20261112-4" defer></script>
+      <script src="/js/photo-originals.js?v=20261113-1" defer></script>
     - |
       <script id="opening-animation-timing">
         (() => {
