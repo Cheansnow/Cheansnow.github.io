@@ -5,6 +5,7 @@
   const releaseTags = {
     "2024-photography-review": "photo-originals-2024-photography-review",
     "2026-national-day-holiday": "photo-originals-2026-national-day-holiday",
+    "2026-xiamen-linhai-jihoufeng": "photo-originals-2026-xiamen-linhai-jihoufeng",
   };
 
   const originalUrl = (src) => {
